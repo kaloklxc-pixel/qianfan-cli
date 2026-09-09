@@ -12,14 +12,29 @@ qianfan --version
 
 ### 直接下载二进制
 
-也可以从 [GitHub Releases](https://github.com/baidubce/qianfan-cli/releases) 直接下载对应平台的二进制文件，下载后需手动添加可执行权限：
+也可以从 [GitHub Releases](https://github.com/baidubce/qianfan-cli/releases) 直接下载对应平台的二进制文件。
+
+**推荐使用 `curl` 下载**（浏览器下载的文件在 macOS 上会被系统隔离，导致无法执行）：
 
 ```bash
-# macOS / Linux
-curl -L -o qianfan "https://github.com/baidubce/qianfan-cli/releases/latest/download/qianfan-<OS>-<ARCH>"
-chmod +x qianfan
-sudo mv qianfan /usr/local/bin/
-qianfan --version
+# macOS (Apple Silicon)
+curl -L -o qianfan "https://github.com/baidubce/qianfan-cli/releases/latest/download/qianfan-latest-darwin-arm64"
+chmod +x qianfan && sudo mv qianfan /usr/local/bin/
+
+# macOS (Intel)
+curl -L -o qianfan "https://github.com/baidubce/qianfan-cli/releases/latest/download/qianfan-latest-darwin-amd64"
+chmod +x qianfan && sudo mv qianfan /usr/local/bin/
+
+# Linux (amd64)
+curl -L -o qianfan "https://github.com/baidubce/qianfan-cli/releases/latest/download/qianfan-latest-linux-amd64"
+chmod +x qianfan && sudo mv qianfan /usr/local/bin/
+```
+
+如果已通过浏览器下载，执行前需先移除系统隔离标记：
+
+```bash
+xattr -d com.apple.quarantine qianfan-*
+chmod +x qianfan-*
 ```
 
 > Windows 用户下载 `.exe` 文件后可直接运行，无需额外操作。
